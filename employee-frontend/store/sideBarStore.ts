@@ -1,13 +1,11 @@
-import {create} from 'zustand'
+import { create } from "zustand";
 
+const useSidebarStore = create((set) => ({
+  tabSelected: "dashboard",
 
-const useSidebarStore = create((set)=>({
-    tabSelected : 'dashboard',
+  setTabSelected: (tab: string) => {
+    set({ tabSelected: tab });
+  },
+}));
 
-    setTabSelected : (tab:string) =>{
-        set({tabSelected : tab})
-
-    }
-}))
-
-export default useSidebarStore
+export default useSidebarStore;
