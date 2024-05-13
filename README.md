@@ -53,3 +53,5 @@
   - departmentName (optional)
   - location (optional)
   - managerId (optional)
+
+- /promotable [`GET`]

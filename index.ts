@@ -1,5 +1,6 @@
 import { Application, Router } from "oak";
 import {
+  type Employee,
   createEmployee,
   createEmployees,
   getEmployees,
@@ -194,6 +195,20 @@ router.delete("/deleteDepartment", async (ctx) => {
       error: e.message,
     });
   }
+});
+
+// promotion
+router.get("/promotable", async (ctx) => {
+  const employees = await getEmployees();
+  const currentDate = new Date().getFullYear();
+  const promotable: Employee[] = [];
+  for (const employee of employees) {
+    if (currentDate - new Date(employee.dateOfJoin).getFullYear() > 5) {
+      promotable.push(employee);
+    }
+  }
+  ctx.response.status = 200;
+  ctx.response.body = promotable;
 });
 
 const app = new Application();

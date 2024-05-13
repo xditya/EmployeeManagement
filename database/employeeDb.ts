@@ -37,7 +37,7 @@ async function createEmployee(
 }
 
 // multiple create
-async function createEmployees(employees: any[]) {
+async function createEmployees(employees: Employee[]) {
   for (const employee of employees) {
     await createEmployee(
       employee.id,
@@ -140,4 +140,5 @@ export {
   getEmployees,
   updateEmployee,
   deleteEmployee,
+  type Employee,
 };
