@@ -31,3 +31,16 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer components {
+  .inputField {
+    @apply outline-none border-black border border-opacity-30 px-3 py-2 text-lg rounded-md font-extralight w-full bg-transparent text-black;
+  }
+
+  .error-message{
+    @apply text-red-300 font-normal text-xl
+  }
+  .bento{
+    @apply bg-white rounded-md shadow-md p-4 w-48 h-48 
+  }
+}
