@@ -41,7 +41,8 @@ const Sidebar = () => {
       <div>
         <div className="flex justify-between items-center pb-6 border-b border-slate-300 px-4">
           {!isNarrow && (
-            <span className="text-2xl font-bold uppercase"> emma</span>
+            <span className="text-2xl font-bold uppercase"> emma <br /> <span className="text-sm font-normal capitalize">Employee Management <br /> Made Accessible</span></span>
+           
           )}
           <div
             onClick={handleArrowClick}
@@ -82,3 +83,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

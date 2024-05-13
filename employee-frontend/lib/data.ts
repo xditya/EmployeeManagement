@@ -14,6 +14,18 @@ async function createEmployee(employee: EmployeeSchema) {
   return res.status == 200;
 }
 
+async function createEmployees(employees: EmployeeSchema[]) {
+  const url = baseUrl + "createEmployees";
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(employees),
+  });
+  return res.status == 200;
+}
+
 async function getEmployees(): Promise<EmployeeSchema[]> {
   const url = baseUrl + "getEmployees";
   const res = await fetch(url);
@@ -26,14 +38,9 @@ async function getEmployees(): Promise<EmployeeSchema[]> {
   return employees;
 }
 
+
 async function updateEmployee(
-  id: number,
-  name?: string,
-  email?: string,
-  contactNumber?: number,
-  dateOfJoin?: Date,
-  yearsOfExperience?: number,
-  departmentId?: number,
+  employee: EmployeeSchema,
 ) {
   const url = baseUrl + "updateEmployee";
   const res = await fetch(url, {
@@ -41,17 +48,9 @@ async function updateEmployee(
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      id,
-      name,
-      email,
-      contactNumber,
-      dateOfJoin,
-      yearsOfExperience,
-      departmentId,
-    }),
+    body: JSON.stringify(employee),
   });
-  return res.json();
+  return res.status == 200;
 }
 
 async function deleteEmployee(id: number) {
@@ -125,6 +124,7 @@ async function getIdFromDepartment(departmentName: string) {
 
 export {
   createEmployee,
+  createEmployees,
   updateEmployee,
   getEmployees,
   deleteEmployee,

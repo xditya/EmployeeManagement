@@ -6,6 +6,7 @@ interface EmployeeSchema {
   dateOfJoin: string;
   yearsOfExperience: number;
   departmentId: number;
+  department?: string;
 }
 
 interface DepartmentSchema {

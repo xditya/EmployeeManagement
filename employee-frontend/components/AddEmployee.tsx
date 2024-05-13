@@ -35,7 +35,7 @@ export function AddEmployee() {
   const [employeeContact, setEmployeeContact] = useState("");
   const [joiningDate, setJoiningDate] = useState("");
 
-  const addEmployee = async (e) => {
+  const addEmployee = async (e:any) => {
     e.preventDefault();
     const employeeData = {
       id: employeeId,
@@ -70,10 +70,10 @@ export function AddEmployee() {
     return id;
   };
 
-  const calculateExperience = (joinDate) => {
+  const calculateExperience = (joinDate:string) => {
     const today = new Date();
     const startDate = new Date(joinDate);
-    const experienceInMilliseconds = today - startDate;
+    const experienceInMilliseconds:number = today.getDate() - startDate.getDate();
     const years = experienceInMilliseconds / (1000 * 60 * 60 * 24 * 365);
     return Math.floor(years);
   };
