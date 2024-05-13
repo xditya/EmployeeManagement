@@ -4,8 +4,9 @@ import {create} from 'zustand'
 const useSidebarStore = create((set)=>({
     tabSelected : 'dashboard',
 
-    setTabSelected : async(tab:string) =>{
+    setTabSelected : (tab:string) =>{
         set({tabSelected : tab})
+
     }
 }))
 
