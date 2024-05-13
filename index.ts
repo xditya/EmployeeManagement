@@ -1,6 +1,7 @@
 import { Application, Router } from "oak";
 import {
   createEmployee,
+  createEmployees,
   getEmployees,
   updateEmployee,
 } from "./database/employeeDb.ts";
@@ -37,6 +38,25 @@ router.post("/createEmployee", async (ctx) => {
       body.yearsOfExperience,
       body.departmentId
     );
+    ctx.response.status = 200;
+    ctx.response.body = "Success";
+  } catch (e) {
+    console.log(e.message);
+    return (ctx.response.body = {
+      error: e.message,
+    });
+  }
+});
+
+router.post("/createEmployees", async (ctx) => {
+  const body = await ctx.request.body().value;
+  if (!body) {
+    ctx.response.status = 400;
+    ctx.response.body = "Bad Request: Body is missing";
+    return;
+  }
+  try {
+    await createEmployees(body);
     ctx.response.status = 200;
     ctx.response.body = "Success";
   } catch (e) {

@@ -36,6 +36,21 @@ async function createEmployee(
   });
 }
 
+// multiple create
+async function createEmployees(employees: any[]) {
+  for (const employee of employees) {
+    await createEmployee(
+      employee.id,
+      employee.name,
+      employee.email,
+      employee.contactNumber,
+      employee.dateOfJoin,
+      employee.yearsOfExperience,
+      employee.departmentId
+    );
+  }
+}
+
 // read
 async function getEmployees() {
   return await employeeDb.find({}).toArray();
@@ -119,4 +134,10 @@ async function deleteEmployee(id: number) {
   await employeeDb.deleteOne({ id });
 }
 
-export { createEmployee, getEmployees, updateEmployee, deleteEmployee };
+export {
+  createEmployee,
+  createEmployees,
+  getEmployees,
+  updateEmployee,
+  deleteEmployee,
+};

@@ -12,6 +12,16 @@
   - yearsOfExperience
   - departmentId
 
+- /createEmployees [`POST`]
+  - employees (array of employees)
+    - id
+    - name
+    - email
+    - contactNumber
+    - dateOfJoin
+    - yearsOfExperience
+    - departmentId
+
 - /getEmployees [`GET`]
 
 - /deleteEmployee [`DELETE`]
