@@ -1,6 +1,8 @@
 # REST API
 
 ## EndPoints
+
+### Employees
 - /createEmployee [`POST`]
   - id
   - name
@@ -23,3 +25,21 @@
   - dateOfJoin (optional)
   - yearsOfExperience (optional)
   - departmentId (optional)
+
+### Departments
+- /createDepartment [`POST`]
+  - departmentId
+  - departmentName
+  - location
+  - managerId
+
+- /getDepartments [`GET`]
+
+- /deleteDepartment [`DELETE`]
+  - departmentId
+
+- /updateDepartment [`PUT`]
+  - departmentId
+  - departmentName (optional)
+  - location (optional)
+  - managerId (optional)

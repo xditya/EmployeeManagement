@@ -5,12 +5,20 @@ import {
   updateEmployee,
 } from "./database/employeeDb.ts";
 import { deleteEmployee } from "./database/employeeDb.ts";
+import {
+  createDepartment,
+  deleteDepartment,
+  getDepartments,
+  updateDepartment,
+} from "./database/departmentDb.ts";
 
 const router = new Router();
 
 router.get("/", (ctx) => {
   ctx.response.redirect("https://www.google.com");
 });
+
+// employees
 
 router.post("/createEmployee", async (ctx) => {
   const body = await ctx.request.body().value;
@@ -82,6 +90,82 @@ router.put("/updateEmployee", async (ctx) => {
       body.departmentId
     );
     ctx.response.body = "Success";
+    return (ctx.response.status = 200);
+  } catch (e) {
+    console.log(e.message);
+    ctx.response.status = 400;
+    return (ctx.response.body = {
+      error: e.message,
+    });
+  }
+});
+
+// departments
+
+router.post("/createDepartment", async (ctx) => {
+  const body = await ctx.request.body().value;
+  if (!body) {
+    ctx.response.status = 400;
+    ctx.response.body = "Bad Request: Body is missing";
+    return;
+  }
+  try {
+    await createDepartment(
+      body.departmentId,
+      body.departmentName,
+      body.location,
+      body.managerId
+    );
+    ctx.response.status = 200;
+    ctx.response.body = "Success";
+  } catch (e) {
+    console.log(e.message);
+    return (ctx.response.body = {
+      error: e.message,
+    });
+  }
+});
+
+router.get("/getDepartments", async (ctx) => {
+  const departments = await getDepartments();
+  ctx.response.body = departments;
+  return (ctx.response.status = 200);
+});
+
+router.put("/updateDepartment", async (ctx) => {
+  const body = await ctx.request.body().value;
+  if (!body) {
+    ctx.response.status = 400;
+    ctx.response.body = "Bad Request: Body is missing";
+    return;
+  }
+  try {
+    await updateDepartment(
+      body.departmentId,
+      body.departmentName,
+      body.location,
+      body.managerId
+    );
+    ctx.response.body = "Success";
+    return (ctx.response.status = 200);
+  } catch (e) {
+    console.log(e.message);
+    ctx.response.status = 400;
+    return (ctx.response.body = {
+      error: e.message,
+    });
+  }
+});
+
+router.delete("/deleteDepartment", async (ctx) => {
+  const body = await ctx.request.body().value;
+  if (!body) {
+    ctx.response.status = 400;
+    ctx.response.body = "Bad Request: Body is missing";
+    return;
+  }
+  try {
+    await deleteDepartment(body.departmentId);
     return (ctx.response.status = 200);
   } catch (e) {
     console.log(e.message);
