@@ -1,5 +1,9 @@
 import { Application, Router } from "oak";
-import { createEmployee, getEmployees } from "./database/employeeDb.ts";
+import {
+  createEmployee,
+  getEmployees,
+  updateEmployee,
+} from "./database/employeeDb.ts";
 import { deleteEmployee } from "./database/employeeDb.ts";
 
 const router = new Router();
@@ -50,6 +54,34 @@ router.delete("/deleteEmployee", async (ctx) => {
   }
   try {
     await deleteEmployee(body.id);
+    return (ctx.response.status = 200);
+  } catch (e) {
+    console.log(e.message);
+    ctx.response.status = 400;
+    return (ctx.response.body = {
+      error: e.message,
+    });
+  }
+});
+
+router.put("/updateEmployee", async (ctx) => {
+  const body = await ctx.request.body().value;
+  if (!body) {
+    ctx.response.status = 400;
+    ctx.response.body = "Bad Request: Body is missing";
+    return;
+  }
+  try {
+    await updateEmployee(
+      body.id,
+      body.name,
+      body.email,
+      body.contactNumber,
+      body.dateOfJoin,
+      body.yearsOfExperience,
+      body.departmentId
+    );
+    ctx.response.body = "Success";
     return (ctx.response.status = 200);
   } catch (e) {
     console.log(e.message);

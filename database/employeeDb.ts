@@ -53,19 +53,63 @@ async function updateEmployee(
 ) {
   if (!(await employeeDb.findOne({ id })))
     throw new Error("Employee does not exist");
-  await employeeDb.updateOne(
-    { id },
-    {
-      $set: {
-        name,
-        email,
-        contactNumber,
-        dateOfJoin,
-        yearsOfExperience,
-        departmentId,
-      },
-    }
-  );
+  if (name)
+    await employeeDb.updateOne(
+      { id },
+      {
+        $set: {
+          name,
+        },
+      }
+    );
+  if (email)
+    await employeeDb.updateOne(
+      { id },
+      {
+        $set: {
+          email,
+        },
+      }
+    );
+  if (contactNumber)
+    await employeeDb.updateOne(
+      { id },
+      {
+        $set: {
+          contactNumber,
+        },
+      }
+    );
+
+  if (dateOfJoin)
+    await employeeDb.updateOne(
+      { id },
+      {
+        $set: {
+          dateOfJoin,
+        },
+      }
+    );
+
+  if (yearsOfExperience)
+    await employeeDb.updateOne(
+      { id },
+      {
+        $set: {
+          yearsOfExperience,
+        },
+      }
+    );
+
+  if (departmentId)
+    await employeeDb.updateOne(
+      { id },
+      {
+        $set: {
+          departmentId,
+        },
+      }
+    );
 }
 
 // delete
