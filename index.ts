@@ -38,9 +38,10 @@ router.post("/createEmployee", async (ctx) => {
 router.get("/getEmployees", async (ctx) => {
   const employees = await getEmployees();
   ctx.response.body = employees;
+  return (ctx.response.status = 200);
 });
 
-router.post("/deleteEmployee", async (ctx) => {
+router.delete("/deleteEmployee", async (ctx) => {
   const body = await ctx.request.body().value;
   if (!body) {
     ctx.response.status = 400;
@@ -48,10 +49,11 @@ router.post("/deleteEmployee", async (ctx) => {
     return;
   }
   try {
-    console.log(body.id);
     await deleteEmployee(body.id);
+    return (ctx.response.status = 200);
   } catch (e) {
     console.log(e.message);
+    ctx.response.status = 400;
     return (ctx.response.body = {
       error: e.message,
     });
