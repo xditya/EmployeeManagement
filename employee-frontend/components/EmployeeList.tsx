@@ -55,7 +55,7 @@ const EmployeeList = () => {
   const [employeeToDelete, setEmployeeToDelete] =
     useState<EmployeeSchema | null>(null);
     const [employeeName, setEmployeeName] = useState("");
-    const [employeeId, setEmployeeID] = useState("");
+    const [employeeId, setEmployeeID] = useState<number>(0);
     const [employeeEmail, setEmployeeEmail] = useState("");
     const [employeeDepartment, setEmployeeDepartment] = useState("");
     const [employeeContact, setEmployeeContact] = useState("");
@@ -142,7 +142,7 @@ const EmployeeList = () => {
   };
   const clearStates = () => {
     setEmployeeName("");
-    setEmployeeID("");
+    setEmployeeID(0);
     setEmployeeEmail("");
     setEmployeeContact("");
     setEmployeeDepartment("");
@@ -249,7 +249,7 @@ const EmployeeList = () => {
                 <Input
                   id="id"
                   value={employeeId}
-                  onChange={(e) => setEmployeeID(e.target.value)}
+                  onChange={(e) => setEmployeeID(parseInt(e.target.value))}
                   className="col-span-3"
                 />
               </div>

@@ -3,7 +3,7 @@ import useSidebarStore from "@/store/sideBarStore";
 import Link from "next/link";
 import React from "react";
 
-const SidebarTab = (tab) => {
+const SidebarTab = (tab:string) => {
   const { setTabSelected } = useSidebarStore();
 
   return (
