@@ -12,9 +12,10 @@ import {
 import { FaFileArrowDown } from "react-icons/fa6";
 import Papa from "papaparse";
 import { createEmployees } from "@/lib/data";
+import { EmployeeSchema } from "@/lib/types";
 
 export function AddCSVEmployee() {
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [fileKey, setFileKey] = useState(0); // Key to force re-rendering
 
   // Function to handle file input change
@@ -30,7 +31,7 @@ export function AddCSVEmployee() {
 
   // Function to parse CSV data
   const handleCSVData = async(result:any) => {
-    const employeesData = result.data.map((row, index) => ({
+    const employeesData = result.data.map((row:any, index:any) => ({
       id: row.id,
       name: row.name,
       email: row.email,
@@ -56,7 +57,7 @@ export function AddCSVEmployee() {
   const handleImportButtonClick = () => {
     // Click the hidden file input element
     if (fileInputRef.current) {
-      fileInputRef.current.click();
+      fileInputRef?.current?.click();
     }
   };
 

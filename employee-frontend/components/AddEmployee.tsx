@@ -29,13 +29,13 @@ import { EmployeeSchema } from "@/lib/types";
 
 export function AddEmployee() {
   const [employeeName, setEmployeeName] = useState("");
-  const [employeeId, setEmployeeID] = useState("");
+  const [employeeId, setEmployeeID] = useState<number>();
   const [employeeEmail, setEmployeeEmail] = useState("");
   const [employeeDepartment, setEmployeeDepartment] = useState("");
   const [employeeContact, setEmployeeContact] = useState("");
   const [joiningDate, setJoiningDate] = useState("");
 
-  const addEmployee = async (e:any) => {
+  const addEmployee = async (e: any) => {
     e.preventDefault();
     const employeeData = {
       id: employeeId,
@@ -55,7 +55,7 @@ export function AddEmployee() {
 
   const clearStates = () => {
     setEmployeeName("");
-    setEmployeeID("");
+    setEmployeeID(0);
     setEmployeeEmail("");
     setEmployeeContact("");
     setEmployeeDepartment("");
@@ -70,10 +70,11 @@ export function AddEmployee() {
     return id;
   };
 
-  const calculateExperience = (joinDate:string) => {
+  const calculateExperience = (joinDate: string) => {
     const today = new Date();
     const startDate = new Date(joinDate);
-    const experienceInMilliseconds:number = today.getDate() - startDate.getDate();
+    const experienceInMilliseconds: number =
+      today.getDate() - startDate.getDate();
     const years = experienceInMilliseconds / (1000 * 60 * 60 * 24 * 365);
     return Math.floor(years);
   };
@@ -108,7 +109,7 @@ export function AddEmployee() {
               <Input
                 id="id"
                 value={employeeId}
-                onChange={(e) => setEmployeeID(e.target.value)}
+                onChange={(e) => setEmployeeID(parseInt(e.target.value))}
                 className="col-span-3"
               />
             </div>
