@@ -3,8 +3,6 @@ import { useState } from "react";
 
 import { MdArrowOutward } from "react-icons/md";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { auth } from "@/app/utils/firebaseConfig";
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -24,7 +22,7 @@ export default function Page() {
   const handleLogin = async () => {
     console.log("Email is " + email);
     console.log("Password is " + password);
-    const loginFailed = () => toast.error('Login Failed');
+    const loginFailed = () => toast.error('Credentials are incorrect.');
     const loginSuccess =() => toast.success('Login Success');
 
     try {
@@ -73,7 +71,7 @@ export default function Page() {
           <div className="font-bold text-black -ml-3">Employee Management System</div>
         </div>
         <div className="text-gray-950 md:text-2xl text-xl opacity-80 font-medium flex-col mb-3 text-left md:w-1/2 w-full md:px-0 px-8 justify-start flex ">
-        {error ? <div className="error-message">{error}</div> : <div>Nice to see you again.</div>}  
+        {error ? <div className="error-message">{error}</div> : <div className="text-lg">Manage all your Employees at ease.</div>}  
         </div>
         <div className="flex-col flex md:w-1/2   justify-items-start items-start ">
           <label htmlFor="email" className="text-xl my-3 font-normal ml-2">
