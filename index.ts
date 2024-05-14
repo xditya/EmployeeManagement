@@ -197,6 +197,31 @@ router.delete("/deleteDepartment", async (ctx) => {
   }
 });
 
+router.delete("/deleteEmployeesInDepartment", async (ctx) => {
+  const body = await ctx.request.body().value;
+  if (!body) {
+    ctx.response.status = 400;
+    ctx.response.body = "Bad Request: Body is missing";
+    return;
+  }
+  try {
+    const employees = await getEmployees();
+    const newEmployees = employees.filter(
+      (employee) => employee.departmentId === JSON.parse(body).departmentId
+    );
+    for (const employee of newEmployees) {
+      await deleteEmployee(employee.id);
+    }
+    return (ctx.response.status = 200);
+  } catch (e) {
+    console.log(e.message);
+    ctx.response.status = 400;
+    return (ctx.response.body = {
+      error: e.message,
+    });
+  }
+});
+
 // promotion
 router.get("/promotable", async (ctx) => {
   const employees = await getEmployees();

@@ -11,7 +11,6 @@
   - dateOfJoin
   - yearsOfExperience
   - departmentId
-
 - /createEmployees [`POST`]
   - employees (array of employees)
     - id
@@ -21,12 +20,9 @@
     - dateOfJoin
     - yearsOfExperience
     - departmentId
-
 - /getEmployees [`GET`]
-
 - /deleteEmployee [`DELETE`]
   - id
-
 - /updateEmployee [`PUT`]
   - id
   - name (optional)
@@ -42,16 +38,16 @@
   - departmentName
   - location
   - managerId
-
 - /getDepartments [`GET`]
-
 - /deleteDepartment [`DELETE`]
   - departmentId
-
 - /updateDepartment [`PUT`]
   - departmentId
   - departmentName (optional)
   - location (optional)
   - managerId (optional)
 
+### Extras
 - /promotable [`GET`]
+- /deleteEmployeesInDepartment [`DELETE`]
+  - departmentId
