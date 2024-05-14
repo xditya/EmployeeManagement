@@ -118,6 +118,14 @@ async function getIdFromDepartment(departmentName: string) {
   return targetDepartment?.departmentId;
 }
 
+async function deleteEmployeesInDepartment(departmentId: number) {
+  const url = baseUrl + "deleteEmployeesInDepartment";
+  const res = await fetch(url, {
+    method: "DELETE",
+    body: JSON.stringify({ departmentId }),
+  });
+}
+
 export {
   createEmployee,
   createEmployees,
@@ -130,4 +138,5 @@ export {
   deleteDepartment,
   getDepartmentFromId,
   getIdFromDepartment,
+  deleteEmployeesInDepartment
 };
