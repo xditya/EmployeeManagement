@@ -9,13 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
+    "chart.js": "^4.4.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "faker": "^5.5.3",
+    "faker-js": "^1.0.0",
     "lucide-react": "^0.378.0",
     "next": "14.2.3",
     "papaparse": "^5.4.1",

@@ -166,7 +166,7 @@ const EmployeeList = () => {
       clearStates();
       setToEdit(false);
     }else{
-
+      console.log("Employee not Updated");
     }
   }
   const getId = async (department: string) => {
