@@ -38,10 +38,7 @@ async function getEmployees(): Promise<EmployeeSchema[]> {
   return employees;
 }
 
-
-async function updateEmployee(
-  employee: EmployeeSchema,
-) {
+async function updateEmployee(employee: EmployeeSchema) {
   const url = baseUrl + "updateEmployee";
   const res = await fetch(url, {
     method: "PUT",
@@ -87,7 +84,7 @@ async function updateDepartment(
   departmentId: number,
   departmentName?: string,
   location?: string,
-  managerId?: number,
+  managerId?: number
 ) {
   const url = baseUrl + "updateDepartment";
   const res = await fetch(url, {
@@ -105,10 +102,19 @@ async function updateDepartment(
   return res.json();
 }
 
+async function deleteDepartment(departmentId: number) {
+  const url = baseUrl + "/deleteDepartment";
+  const res = await fetch(url, {
+    method: "DELETE",
+    body: JSON.stringify({ departmentId: "departmentId" }),
+  });
+  return res.status == 200;
+}
+
 async function getDepartmentFromId(departmentId: number) {
   const departments = await getDepartments();
   const matches = departments?.find(
-    (department: DepartmentSchema) => department.departmentId === departmentId,
+    (department: DepartmentSchema) => department.departmentId === departmentId
   );
   return matches?.departmentName;
 }
@@ -117,7 +123,7 @@ async function getIdFromDepartment(departmentName: string) {
   const departments = await getDepartments();
   const targetDepartment = departments?.find(
     (department: DepartmentSchema) =>
-      department.departmentName == departmentName,
+      department.departmentName == departmentName
   );
   return targetDepartment?.departmentId;
 }
@@ -131,6 +137,7 @@ export {
   createDepartment,
   getDepartments,
   updateDepartment,
+  deleteDepartment,
   getDepartmentFromId,
   getIdFromDepartment,
 };
