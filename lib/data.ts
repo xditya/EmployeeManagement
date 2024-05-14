@@ -103,10 +103,10 @@ async function updateDepartment(
 }
 
 async function deleteDepartment(departmentId: number) {
-  const url = baseUrl + "/deleteDepartment";
+  const url = baseUrl + "deleteDepartment";
   const res = await fetch(url, {
     method: "DELETE",
-    body: JSON.stringify({ departmentId: "departmentId" }),
+    body: JSON.stringify({ departmentId }),
   });
   return res.status == 200;
 }
