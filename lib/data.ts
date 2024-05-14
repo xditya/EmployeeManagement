@@ -80,24 +80,14 @@ async function getDepartments() {
   return res.json();
 }
 
-async function updateDepartment(
-  departmentId: number,
-  departmentName?: string,
-  location?: string,
-  managerId?: number
-) {
+async function updateDepartment(department: DepartmentSchema) {
   const url = baseUrl + "updateDepartment";
   const res = await fetch(url, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      departmentId,
-      departmentName,
-      location,
-      managerId,
-    }),
+    body: JSON.stringify(department),
   });
   return res.json();
 }
