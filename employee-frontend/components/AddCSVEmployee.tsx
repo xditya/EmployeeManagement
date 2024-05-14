@@ -63,9 +63,9 @@ export function AddCSVEmployee() {
 
   return (
     <>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline" onClick={handleImportButtonClick}>
+      <Dialog >
+        <DialogTrigger asChild >
+          <Button variant="outline" className="mx-8" onClick={handleImportButtonClick}>
             Import CSV
           </Button>
         </DialogTrigger>

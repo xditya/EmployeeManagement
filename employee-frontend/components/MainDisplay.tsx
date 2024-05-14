@@ -15,7 +15,7 @@ const MainDisplay = () => {
   let displayContent;
   switch (tabSelected) {
     case "dashboard":
-      displayContent = <Dashboard />;
+      displayContent = <Dashboard/>;
       break;
     case "employees":
       displayContent = <Employees />;
@@ -30,7 +30,7 @@ const MainDisplay = () => {
       displayContent = ``;
   }
   return (
-    <div className={` ${isNarrow ? "w-[92%]" : "w-4/5"}h-full  `}>
+    <div className={` ${isNarrow ? "w-[92%]" : "w-4/5"}  mx-20 h-full  `}>
       {displayContent}
     </div>
   );
