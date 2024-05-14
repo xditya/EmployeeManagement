@@ -22,17 +22,18 @@ const AnalyticsCharts = ({ employees, departments }: { employees: EmployeeSchema
       experienceDistribution[experience] = (experienceDistribution[experience] || 0) + 1;
 
       const departmentName = departments.find(dep => dep.departmentId === employee.departmentId)?.departmentName || 'Unknown';
+      console.log('Employee ID:', employee.id, 'Department Name:', departmentName);
       departmentEmployeeCount[departmentName] = (departmentEmployeeCount[departmentName] || 0) + 1;
       scatterData.push({ x: employee.yearsOfExperience, y: departmentName });
 
       const joinYear = new Date(employee.dateOfJoin).getFullYear();
       joinTrend[joinYear] = (joinTrend[joinYear] || 0) + 1;
     });
-
+    
     renderChart(barChartRef, 'bar', Object.keys(departmentEmployeeCount), Object.values(departmentEmployeeCount), 'Employee Count per Department');
     renderChart(pieChartRef, 'pie', Object.keys(experienceDistribution), Object.values(experienceDistribution), 'Distribution of Employees by Years of Experience');
     renderChart(lineChartRef, 'line', Object.keys(joinTrend), Object.values(joinTrend), 'Trend of Employee Joining Over Time');
-    renderChart(scatterPlotRef, 'scatter', scatterData, null, 'Relationship Between Years of Experience and Department');
+    renderChart(scatterPlotRef, 'scatter', scatterData.map(({ x, y }) => ({ x, y })), null, 'Relationship Between Years of Experience and Department');
 
     return () => {
       destroyChart(barChartRef);
