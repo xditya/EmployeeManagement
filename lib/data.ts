@@ -89,7 +89,7 @@ async function updateDepartment(department: DepartmentSchema) {
     },
     body: JSON.stringify(department),
   });
-  return res.json();
+  return res.status == 200
 }
 
 async function deleteDepartment(departmentId: number) {
@@ -124,6 +124,7 @@ async function deleteEmployeesInDepartment(departmentId: number) {
     method: "DELETE",
     body: JSON.stringify({ departmentId }),
   });
+  return res.status == 200;
 }
 
 export {

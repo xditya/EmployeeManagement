@@ -49,10 +49,10 @@ const AnalyticsCharts = ({ employees, departments }: { employees: EmployeeSchema
     const ctx = ref.current.getContext('2d');
     if (!ctx) return;
 
-    if (ref.current.chart) {
-      console.log("Current Chart Destroyed")
-      ref.current.chart.destroy();
-    }
+    // if (ref.current.chart) {
+      // console.log("Current Chart Destroyed")
+      // ref.current.chart.destroy();
+    // }
 
     const newChart = new Chart(ctx, {
       type: type,

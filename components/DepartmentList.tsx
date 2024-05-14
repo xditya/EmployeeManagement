@@ -1,5 +1,5 @@
 'use client'; 
-import { deleteDepartment, getDepartments, updateDepartment } from '@/lib/data';
+import { deleteDepartment, deleteEmployeesInDepartment, getDepartments, updateDepartment } from '@/lib/data';
 import { DepartmentSchema, EmployeeSchema } from '@/lib/types';
 import React, { useEffect, useState } from 'react';
 import {
@@ -101,6 +101,12 @@ const DepartmentList = () => {
     } else {
       console.error("Error Deleting Department");
     }
+ const result =  await deleteEmployeesInDepartment(department.departmentId);
+     if(result){
+      console.log("Participants from the department also deleted");
+  }else{
+    console.log("Uanable to delete Participants");
+  }
     setToDelete(false);
 
   }
