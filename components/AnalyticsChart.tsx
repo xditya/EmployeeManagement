@@ -12,24 +12,14 @@ const AnalyticsCharts = ({ employees, departments }: { employees: EmployeeSchema
   useEffect(() => {
     if (employees.length === 0 || departments.length === 0) return;
 
-    const departmentEmployeeCount = {};
-    const experienceDistribution = {};
     const joinTrend = {};
-    const scatterData = [];
-
-    employees.forEach(employee => {
-      const departmentName = departments.find(dep => dep.departmentId === employee.departmentId)?.departmentName || 'Unknown';
-      departmentEmployeeCount[departmentName] = (departmentEmployeeCount[departmentName] || 0) + 1;
-    });
+    const scatterData:any[] = [];
+    const departmentEmployeeCount: { [key: string]: number } = {};
+    const experienceDistribution: { [key: number]: number } = {};
 
     employees.forEach(employee => {
       const experience = Math.floor(employee.yearsOfExperience / 5) * 5;
       experienceDistribution[experience] = (experienceDistribution[experience] || 0) + 1;
-    });
-
-    employees.forEach(employee => {
-      const joinYear = new Date(employee.dateOfJoin).getFullYear();
-      joinTrend[joinYear] = (joinTrend[joinYear] || 0) + 1;
     });
 
     employees.forEach(employee => {
@@ -53,7 +43,7 @@ const AnalyticsCharts = ({ employees, departments }: { employees: EmployeeSchema
     };
   }, [employees, departments]);
 
-  const renderChart = (ref, type, labels, data, title) => {
+  const renderChart = (ref:any, type:any, labels:any, data:any, title:string) => {
     if (!ref.current) return;
 
     const ctx = ref.current.getContext('2d');
@@ -103,7 +93,7 @@ const AnalyticsCharts = ({ employees, departments }: { employees: EmployeeSchema
     ref.current.chart = newChart;
   };
 
-  const destroyChart = (ref) => {
+  const destroyChart = (ref:any) => {
     if (!ref.current) return;
     // if (ref.current.chart) {
     //   // ref.current.chart.destroy();
