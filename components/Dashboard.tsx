@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { DepartmentSchema, EmployeeSchema } from '@/lib/types';
-import { getDepartmentFromId, getDepartments, getEmployees } from '@/lib/data';
-import { Bar } from 'react-chartjs-2';
+} from "@/components/ui/card";
+import { DepartmentSchema, EmployeeSchema } from "@/lib/types";
+import { getDepartmentFromId, getDepartments, getEmployees } from "@/lib/data";
+import { Bar } from "react-chartjs-2";
 
 const Dashboard = () => {
   const [employees, setEmployees] = useState<EmployeeSchema[]>([]);
@@ -27,7 +27,7 @@ const Dashboard = () => {
         console.error("Error fetching:", error);
       }
     };
-    
+
     fetchData();
   }, []);
 
@@ -38,27 +38,28 @@ const Dashboard = () => {
   //   return department;
   // };
 
-
-  const departmentEmployeeCount = {};
   const lastFiveEmployees = employees.slice(-5);
 
-  
+  const departmentEmployeeCount: Record<string, number> = {};
+
   employees.forEach((employee) => {
     const departmentName =
       departments.find((dep) => dep.departmentId === employee.departmentId)
-        ?.departmentName || 'Unknown';
-    departmentEmployeeCount[departmentName]  =
+        ?.departmentName || "Unknown";
+    departmentEmployeeCount[departmentName] =
       (departmentEmployeeCount[departmentName] || 0) + 1;
   });
+
+  console.log(departmentEmployeeCount);
 
   const chartData = {
     labels: Object.keys(departmentEmployeeCount),
     datasets: [
       {
-        label: 'Employee Count per Department',
+        label: "Employee Count per Department",
         data: Object.values(departmentEmployeeCount),
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: "rgba(54, 162, 235, 0.5)",
+        borderColor: "rgba(54, 162, 235, 1)",
         borderWidth: 1,
       },
     ],
@@ -81,15 +82,19 @@ const Dashboard = () => {
         <Card>
           <CardHeader>
             <CardTitle>Employee and Department Count</CardTitle>
-            <CardDescription>Total number of employees and departments</CardDescription>
+            <CardDescription>
+              Total number of employees and departments
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col space-y-4  justify-center text-2xl items-center">
               <div>
-                <span className="font-bold">Total Employees:</span> {employees.length}
+                <span className="font-bold">Total Employees:</span>{" "}
+                {employees.length}
               </div>
               <div>
-                <span className="font-bold">Total Departments:</span> {departments.length}
+                <span className="font-bold">Total Departments:</span>{" "}
+                {departments.length}
               </div>
             </div>
           </CardContent>
@@ -103,9 +108,7 @@ const Dashboard = () => {
           <CardContent>
             <ul>
               {lastFiveEmployees.map((employee, index) => (
-                <li key={index}>
-                  {employee.name} 
-                </li>
+                <li key={index}>{employee.name}</li>
               ))}
             </ul>
           </CardContent>

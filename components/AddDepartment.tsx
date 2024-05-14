@@ -29,10 +29,10 @@ import {
 import { DepartmentSchema, EmployeeSchema } from "@/lib/types";
 
 export default function AddEmployee() {
-  const [departmentName,setDepartmentName] = useState("");
-  const [departmentId,setDepartmentId] = useState<number>(0);
-  const [managerId,setManagerId] = useState<number>(0);
-  const [location,setLocation] = useState("");
+  const [departmentName, setDepartmentName] = useState("");
+  const [departmentId, setDepartmentId] = useState<number>(0);
+  const [managerId, setManagerId] = useState<number>(0);
+  const [location, setLocation] = useState("");
 
   const addDepartment = async (e: any) => {
     e.preventDefault();
@@ -46,7 +46,7 @@ export default function AddEmployee() {
     const res = await createDepartment(departmentData as DepartmentSchema);
     if (res) {
       clearStates();
-    }else{
+    } else {
       console.log("Error adding Department");
     }
   };
@@ -92,7 +92,8 @@ export default function AddEmployee() {
         <DialogHeader>
           <DialogTitle>Add Department</DialogTitle>
           <DialogDescription>
-            Add a new Department to the database. Click Add when you&apos;re done.
+            Add a new Department to the database. Click Add when you&apos;re
+            done.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={addDepartment}>
@@ -100,7 +101,7 @@ export default function AddEmployee() {
             {/* Other input fields */}
             <div className="grid grid-cols-3 items-center gap-4">
               <Label htmlFor="departmentName" className="text-left">
-              Department Name
+                Department Name
               </Label>
               <Input
                 id="id"
@@ -116,7 +117,7 @@ export default function AddEmployee() {
               <Input
                 id="id"
                 value={departmentId}
-                onChange={(e) => setDepartmentId(e.target.value)}
+                onChange={(e) => setDepartmentId(Number(e.target.value))}
                 className="col-span-3"
               />
             </div>
@@ -133,18 +134,17 @@ export default function AddEmployee() {
             </div>
             <div className="grid grid-cols-3 items-center gap-4">
               <Label htmlFor="managerIdx`" className="text-left">
-              Manager Id
-                </Label>
+                Manager Id
+              </Label>
               <Input
                 id="contact"
                 value={managerId}
-                onChange={(e) => setManagerId(e.target.value)}
+                onChange={(e) => setManagerId(Number(e.target.value))}
                 className="col-span-3"
               />
             </div>
-           
-            </div>
-          
+          </div>
+
           <DialogFooter>
             <Button type="submit">Add Department</Button>
           </DialogFooter>
