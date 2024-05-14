@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 import { EmployeeSchema, DepartmentSchema } from '../lib/types';
@@ -12,45 +12,43 @@ const AnalyticsCharts = ({ employees, departments }: { employees: EmployeeSchema
   useEffect(() => {
     if (employees.length === 0 || departments.length === 0) return;
 
-    const joinTrend = {};
-    const scatterData:any[] = [];
+    const joinTrend: { [key: number]: number } = {};
+    const scatterData: any[] = [];
     const departmentEmployeeCount: { [key: string]: number } = {};
     const experienceDistribution: { [key: number]: number } = {};
 
     employees.forEach(employee => {
       const experience = Math.floor(employee.yearsOfExperience / 5) * 5;
       experienceDistribution[experience] = (experienceDistribution[experience] || 0) + 1;
+
+      const departmentName = departments.find(dep => dep.departmentId === employee.departmentId)?.departmentName || 'Unknown';
+      departmentEmployeeCount[departmentName] = (departmentEmployeeCount[departmentName] || 0) + 1;
+      scatterData.push({ x: employee.yearsOfExperience, y: departmentName });
+
+      const joinYear = new Date(employee.dateOfJoin).getFullYear();
+      joinTrend[joinYear] = (joinTrend[joinYear] || 0) + 1;
     });
 
-    employees.forEach(employee => {
-      const departmentName = departments.find(dep => dep.departmentId === employee.departmentId)?.departmentName || 'Unknown';
-      scatterData.push({ x: employee.yearsOfExperience, y: departmentName });
-    });
-    destroyChart(0)
     renderChart(barChartRef, 'bar', Object.keys(departmentEmployeeCount), Object.values(departmentEmployeeCount), 'Employee Count per Department');
-    destroyChart(barChartRef);
     renderChart(pieChartRef, 'pie', Object.keys(experienceDistribution), Object.values(experienceDistribution), 'Distribution of Employees by Years of Experience');
-    destroyChart(pieChartRef);
     renderChart(lineChartRef, 'line', Object.keys(joinTrend), Object.values(joinTrend), 'Trend of Employee Joining Over Time');
-    destroyChart(lineChartRef);
     renderChart(scatterPlotRef, 'scatter', scatterData, null, 'Relationship Between Years of Experience and Department');
-    destroyChart(scatterPlotRef);
+
     return () => {
-      // destroyChart(barChartRef);
-      // destroyChart(pieChartRef);
-      // destroyChart(lineChartRef);
-      // destroyChart(scatterPlotRef);
+      destroyChart(barChartRef);
+      destroyChart(pieChartRef);
+      destroyChart(lineChartRef);
+      destroyChart(scatterPlotRef);
     };
   }, [employees, departments]);
 
-  const renderChart = (ref:any, type:any, labels:any, data:any, title:string) => {
+  const renderChart = (ref: any, type: any, labels: any, data: any, title: string) => {
     if (!ref.current) return;
 
     const ctx = ref.current.getContext('2d');
     if (!ctx) return;
 
     if (ref.current.chart) {
-      console.log("Current Chart Destroyed")
       ref.current.chart.destroy();
     }
 
@@ -93,28 +91,11 @@ const AnalyticsCharts = ({ employees, departments }: { employees: EmployeeSchema
     ref.current.chart = newChart;
   };
 
-  const destroyChart = (ref:any) => {
-    if (!ref.current) return;
-    // if (ref.current.chart) {
-    //   ref.current.chart.destroy();
-    // }
+  const destroyChart = (ref: any) => {
+    if (ref.current && ref.current.chart) {
+      ref.current.chart.destroy();
+    }
   };
-
-  // Render the canvas elements and call renderChart function
-  useEffect(() => {
-    renderChart(barChartRef, 'bar', ['Label 1', 'Label 2'], [10, 20], 'Bar Chart');
-    renderChart(pieChartRef, 'pie', ['Label 1', 'Label 2', 'Label 3'], [30, 40, 30], 'Pie Chart');
-    renderChart(lineChartRef, 'line', ['Label 1', 'Label 2', 'Label 3', 'Label 4'], [10, 20, 15, 25], 'Line Chart');
-    renderChart(scatterPlotRef, 'scatter', ['Label 1', 'Label 2', 'Label 3', 'Label 4'], [{x: 1, y: 2}, {x: 2, y: 3}, {x: 3, y: 4}, {x: 4, y: 5}], 'Scatter Plot');
-
-    // Clean up function to destroy charts when component unmounts
-    return () => {
-      destroyChart(barChartRef);
-      destroyChart(pieChartRef);
-      destroyChart(lineChartRef);
-      destroyChart(scatterPlotRef);
-    };
-  }, []);
 
   return (
     <div>
