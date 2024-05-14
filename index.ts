@@ -186,7 +186,7 @@ router.delete("/deleteDepartment", async (ctx) => {
     return;
   }
   try {
-    await deleteDepartment(body.departmentId);
+    await deleteDepartment(JSON.parse(body).departmentId);
     return (ctx.response.status = 200);
   } catch (e) {
     console.log(e.message);

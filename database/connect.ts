@@ -4,7 +4,6 @@ import { MongoClient } from "mongo";
 console.log("Connecting to MongoDB...");
 const client = new MongoClient();
 let MONGO_URL = config.MONGO_URL;
-console.log("MONGO_URL", MONGO_URL);
 if (!MONGO_URL.endsWith("authMechanism=SCRAM-SHA-1")) {
   MONGO_URL += "&authMechanism=SCRAM-SHA-1";
 }
