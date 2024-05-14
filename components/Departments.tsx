@@ -1,6 +1,7 @@
 import React from "react";
 import AddDepartment from "./AddDepartment";
 import DepartmentList from "./DepartmentList";
+import PromotionList from "./PromotionList";
 
 const Departments = () => {
   return (
@@ -8,7 +9,7 @@ const Departments = () => {
       <h1 className="font-bold text-4xl my-5">Departments</h1>
       <AddDepartment />
       <DepartmentList />
-    </div>
+          </div>
   );
 };
 

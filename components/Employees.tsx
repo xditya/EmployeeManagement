@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { AddEmployee } from "./AddEmployee";
 import { AddCSVEmployee } from "./AddCSVEmployee";
 import EmployeeList from "./EmployeeList";
+import PromotionList from "./PromotionList";
 
 const Employees = () => {
   return (
@@ -11,6 +12,8 @@ const Employees = () => {
       <AddEmployee />
       <AddCSVEmployee />
       <EmployeeList />
+      <h1 className="font-bold text-3xl mt-10">Promoted List</h1>
+      <PromotionList/>
     </div>
   );
 };

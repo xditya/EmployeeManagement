@@ -127,6 +127,11 @@ async function deleteEmployeesInDepartment(departmentId: number) {
   return res.status == 200;
 }
 
+async function getPromotionList(){
+  const url = baseUrl + 'promotable';
+  const res = await fetch(url);
+  return res.json();
+}
 export {
   createEmployee,
   createEmployees,
@@ -139,5 +144,6 @@ export {
   deleteDepartment,
   getDepartmentFromId,
   getIdFromDepartment,
-  deleteEmployeesInDepartment
+  getPromotionList,
+    deleteEmployeesInDepartment
 };

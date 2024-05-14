@@ -108,7 +108,7 @@ const Dashboard = () => {
           <CardContent>
             <ul>
               {lastFiveEmployees.map((employee, index) => (
-                <li key={index}>{employee.name}</li>
+                <li key={index} className="text-md my-2 font-medium">{employee.name}</li>
               ))}
             </ul>
           </CardContent>

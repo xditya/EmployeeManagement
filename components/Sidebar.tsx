@@ -61,7 +61,7 @@ const Sidebar = () => {
             return (
               <div key={index}>
                 <Link
-                  className={`flex items-center gap-3 rounded-lg ${tabSelected === tabName ? "bg-gray-200 text-gray-900" : "bg-white"} px-3 py-3  transition-all duration-300 ease-in-out hover:text-gray-900 dark:bg-gray-800 text-base font-normal text-gray-500`}
+                  className={`flex items-center gap-3 rounded-lg ${tabSelected === tabName ? "bg-red-200 text-gray-900" : "bg-white"} px-3 py-3  transition-all duration-300 ease-in-out hover:text-gray-900 dark:bg-gray-800 text-base font-normal text-gray-500`}
                   href="#"
                   onClick={() => handleTabClick(tabName.toLowerCase())}
                 >
