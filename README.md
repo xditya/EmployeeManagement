@@ -1,6 +1,12 @@
 # REST API
+Backend API for employee management.   
 
-## EndPoints
+[Live URL](https://emma.deno.dev)
+
+# FrontEnd Codes
+[Switch to FrontEnd Codes](https://github.com/xditya/EmployeeManagement/tree/frontend)
+
+## API EndPoints
 
 ### Employees
 - /createEmployee [`POST`]
