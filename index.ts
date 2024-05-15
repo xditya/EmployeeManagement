@@ -17,7 +17,7 @@ import {
 const router = new Router();
 
 router.get("/", (ctx) => {
-  ctx.response.redirect("https://www.google.com");
+  ctx.response.redirect("https://emma-manager.netlify.app");
 });
 
 // employees
