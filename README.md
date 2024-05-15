@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EMMA - Employee Management Made Accessible
+Web application providing comprehensive functionalities to manage employees and departments efficiently, with CRUD operations and analytics.
 
-## Getting Started
+# Backend API
+[Switch to REST API Codes](https://github.com/xditya/EmployeeManagement/tree/main) 
 
-First, run the development server:
+# Features
+1. **Employee CRUD Operations**: REST API endpoints for adding, retrieving, updating, and deleting employee records.
+2. **Department CRUD Operations**: REST API endpoints for managing department details, including addition, retrieval, modification, and deletion.
+3. **Employee-Department Assignment**: REST API endpoints to assign employees to specific departments, ensuring one-to-one association.
+4. **Employee Promotion**: REST API endpoints to handle employee promotions based on experience (minimum 5 years), updating roles to manager positions accordingly.
+5. **Realtime Analytics**: Graphical analysis of employees and departments.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Screenshots
+![image](https://github.com/xditya/EmployeeManagement/assets/58950863/79efe7cd-3b64-4174-a825-c2809f4626b5)
+![image](https://github.com/xditya/EmployeeManagement/assets/58950863/3f86a14e-91d0-438b-b356-f300f706f486)
+![image](https://github.com/xditya/EmployeeManagement/assets/58950863/533f8a12-fd46-4761-9536-aa13d5657461)
+![image](https://github.com/xditya/EmployeeManagement/assets/58950863/691ac054-0c6d-46a8-aa4e-b3c1506d8d63)
+![image](https://github.com/xditya/EmployeeManagement/assets/58950863/710107c5-fb41-45f6-bf83-44a3eeff4dab)
+![image](https://github.com/xditya/EmployeeManagement/assets/58950863/3db90b1e-5316-4ddc-818b-ed13b1ec2e7c)
+![image](https://github.com/xditya/EmployeeManagement/assets/58950863/a6575b86-ee3b-420b-9198-2510c639572e)
+![image](https://github.com/xditya/EmployeeManagement/assets/58950863/2b772c11-c26b-4968-b4b2-bba8b54d2438)
+![image](https://github.com/xditya/EmployeeManagement/assets/58950863/4516aa05-c187-4512-949a-645774a144a3)
+![image](https://github.com/xditya/EmployeeManagement/assets/58950863/af8a6730-1664-4d63-a6b5-7bdc62a03ab7)
