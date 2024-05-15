@@ -1,5 +1,7 @@
 # EMMA - Employee Management Made Accessible
-Web application providing comprehensive functionalities to manage employees and departments efficiently, with CRUD operations and analytics.
+Web application providing comprehensive functionalities to manage employees and departments efficiently, with CRUD operations and analytics.   
+   
+[Live Deployment](https://emma-manager.netlify.app)
 
 # Backend API
 [Switch to REST API Codes](https://github.com/xditya/EmployeeManagement/tree/main) 
