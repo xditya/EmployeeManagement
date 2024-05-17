@@ -13,6 +13,13 @@ Web application providing comprehensive functionalities to manage employees and 
 4. **Employee Promotion**: REST API endpoints to handle employee promotions based on experience (minimum 5 years), updating roles to manager positions accordingly.
 5. **Realtime Analytics**: Graphical analysis of employees and departments.
 
+## The Team
+- [Aditya S.](https://xditya.me) ([@xditya](https://github.com/xditya))
+- Ferwin Lopez ([@fer-win](https://github.com/fer-win))
+- Gowri S. ([@gxrii](https://github.com/gxrii))
+- V. Vany Suria ([@vanysuria](https://github.com/vanysuria))
+
+
 # Screenshots
 ![image](https://github.com/xditya/EmployeeManagement/assets/58950863/79efe7cd-3b64-4174-a825-c2809f4626b5)
 ![image](https://github.com/xditya/EmployeeManagement/assets/58950863/3f86a14e-91d0-438b-b356-f300f706f486)
