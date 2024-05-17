@@ -57,3 +57,9 @@ Backend API for employee management.
 - /promotable [`GET`]
 - /deleteEmployeesInDepartment [`DELETE`]
   - departmentId
+
+## The Team
+- [Aditya S.](https://xditya.me) ([@xditya](https://github.com/xditya))
+- Ferwin Lopez ([@fer-win](https://github.com/fer-win))
+- Gowri S. ([@gxrii](https://github.com/gxrii))
+- V. Vany Suria ([@vanysuria](https://github.com/vanysuria))
